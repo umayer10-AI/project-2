@@ -109,7 +109,8 @@ const taka = (v) => {
     arr.push(h);
     const t = v.querySelector(".t").innerText;
 
-    const cnt = arr.filter(x => x === h).length;
+    let cnt = 0;
+    cnt = arr.filter(x => x === h).length;
 
     let doller1 = document.querySelector(".doller");
     let doller2 = document.querySelector(".doller").innerText;
@@ -120,12 +121,12 @@ const taka = (v) => {
 
     const n = document.createElement("div");
     n.innerHTML = `<div class="bg-[#CFF0DC] rounded-xl p-3 flex justify-between items-center pp">
-                            <div class="space-y-1">
-                                <p class="font-medium text-[14px]">${h}</p>
-                                <p class="text-[12px]"><span class="tt">${t}</span> x <span class="num">${cnt}</span></p>
-                            </div>
-                                <div class="cross"><i class="fa-solid fa-xmark"></i></div>
-                            </div>`;
+                        <div class="space-y-1">
+                            <p class="font-medium text-[14px] card-header">${h}</p>
+                            <p class="text-[12px]"><span class="tt">${t}</span> x <span class="num">${cnt}</span></p>
+                        </div>
+                            <div class="cross"><i class="fa-solid fa-xmark"></i></div>
+                        </div>`;
     
     m.appendChild(n);
     gg();
@@ -165,8 +166,15 @@ moneyDiv.addEventListener("click", (e) => {
     const amount2 = dlt.querySelector(".tt").innerText;
     let doller1 = document.querySelector(".doller");
     let doller2 = document.querySelector(".doller").innerText;
+
+    const itemName = dlt.querySelector(".card-header").innerText;
+
     let total = Number(doller2) - Number(amount2);
     doller1.innerText = total;
+
+    const idx = arr.indexOf(itemName);
+    
+    arr.splice(idx, 1);
 
     console.log(total)
     if(dlt){
