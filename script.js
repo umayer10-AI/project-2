@@ -6,7 +6,7 @@ const btnCall = (v) => {
     v.forEach(x => {
         const li = document.createElement("li");
         li.id = x.id;
-        li.className = "border-1 p-2 rounded-lg btn btn-outline block s";
+        li.className = "border-1 p-2 rounded-lg btn btn-outline bg-[#CFF0DC] block s";
         li.innerHTML = `${x.category_name}`;
         u.appendChild(li);
     });
@@ -17,12 +17,12 @@ const boxCall = (v) => {
     div.innerHTML = "";
     v.plants.forEach(x => {
         const d = document.createElement("div");
-        d.innerHTML = `<div class="bg-white space-y-2 p-4 rounded-xl shadow-lg k">
+        d.innerHTML = `<div class="bg-white space-y-2 p-4 rounded-xl shadow-lg flex flex-col k">
                     <div>
-                        <img class="rounded-xl w-full" src="${x.image}" alt="">
+                        <img class="rounded-xl w-full h-40 object-cover" src="${x.image}" alt="">
                     </div>
                     <h3 class="font-bold">${x.name}</h3>
-                    <p class="text-[12px]">${x.description}</p>
+                    <p class="text-[12px] line-clamp-2">${x.description}</p>
                     <div class="flex justify-between items-center">
                         <button class="btn btn-soft btn-success rounded-full">${x.category}</button>
                         <p class="font-semibold">৳<span class="t">${x.price}</span></p>
@@ -52,18 +52,18 @@ let card = (v) => {
 
     v.plants.forEach(x => {
         const d = document.createElement("div");
-        d.innerHTML = `<div class="bg-white space-y-2 p-4 rounded-xl shadow-lg">
+        d.innerHTML = `<div class="bg-white space-y-2 p-4 rounded-xl shadow-lg flex flex-col k">
                     <div>
-                        <img class="rounded-xl w-full" src="${x.image}" alt="">
+                        <img class="rounded-xl w-full h-40 object-cover" src="${x.image}" alt="">
                     </div>
                     <h3 class="font-bold">${x.name}</h3>
-                    <p class="text-[12px]">${x.description}</p>
+                    <p class="text-[12px] line-clamp-2">${x.description}</p>
                     <div class="flex justify-between items-center">
                         <button class="btn btn-soft btn-success rounded-full">${x.category}</button>
-                        <p class="font-semibold">${x.price}</p>
+                        <p class="font-semibold">৳<span class="t">${x.price}</span></p>
                     </div>
-                    <button class="btn p-2 rounded-full bg-[#15803D] text-white font-semibold w-full">Add to Cart</button>
-                </div>`;
+                        <button class="btn p-2 rounded-full bg-[#15803D] text-white font-semibold w-full f">Add to Cart</button>
+                    </div>`;
 
         div.appendChild(d);
     })
@@ -75,12 +75,11 @@ let callingBoxes = async (id) => {
     if(id === "all-btn"){
         const a1 = await fetch("https://openapi.programming-hero.com/api/plants");
         const b1 = await a1.json();
-        card(b1)
+        card(b1);
     }
     else{
         const a = await fetch(`https://openapi.programming-hero.com/api/category/${id}`);
         const b = await a.json();
-
         card(b);
     }
 }
@@ -94,35 +93,44 @@ m.addEventListener("click", (e) => {
         let btns = document.querySelectorAll(".s");
         btns.forEach(v => {
             v.classList.remove("bg-[#15803D]", "text-white");
+            v.classList.add("bg-[#CFF0DC]", "text-black");
         })
+        b.classList.remove("bg-[#CFF0DC]", "text-black");
         b.classList.add("bg-[#15803D]", "text-white");
 
         callingBoxes(c);
     }
 })
 
+let arr = [];
 
 const taka = (v) => {
     const h = v.querySelector("h3").innerText;
+    arr.push(h);
     const t = v.querySelector(".t").innerText;
+
+    const cnt = arr.filter(x => x === h).length;
+
     let doller1 = document.querySelector(".doller");
     let doller2 = document.querySelector(".doller").innerText;
     const z = Number(doller2) + Number(t);
     doller1.innerText = z;
-    console.log(z)
+    // console.log(arr)
     const m = document.querySelector(".money");
 
     const n = document.createElement("div");
-    n.innerHTML = `<div class="bg-[#CFF0DC] rounded-xl p-3 flex justify-between items-center">
+    n.innerHTML = `<div class="bg-[#CFF0DC] rounded-xl p-3 flex justify-between items-center pp">
                             <div class="space-y-1">
                                 <p class="font-medium text-[14px]">${h}</p>
-                                <p class="text-[12px]">${t} x 1</p>
+                                <p class="text-[12px]"><span class="tt">${t}</span> x <span class="num">${cnt}</span></p>
                             </div>
-                            <div><i class="fa-solid fa-xmark"></i></div>
-                        </div>`;
+                                <div class="cross"><i class="fa-solid fa-xmark"></i></div>
+                            </div>`;
     
     m.appendChild(n);
     gg();
+
+
 }
 
 const boxes = document.querySelector(".box");
@@ -132,6 +140,7 @@ boxes.addEventListener("click",(e) => {
         taka(p);
     }
 })
+
 
 let gg = () => {
     const m = document.querySelector(".money");
@@ -145,3 +154,27 @@ let gg = () => {
     }
 }
 gg();
+
+
+const moneyDiv = document.querySelector(".money");
+// const cross = document.querySelector(".cross");
+
+moneyDiv.addEventListener("click", (e) => {
+    const dlt = e.target.closest(".pp");
+    const amount = dlt.querySelector(".tt");
+    const amount2 = dlt.querySelector(".tt").innerText;
+    let doller1 = document.querySelector(".doller");
+    let doller2 = document.querySelector(".doller").innerText;
+    let total = Number(doller2) - Number(amount2);
+    doller1.innerText = total;
+
+    console.log(total)
+    if(dlt){
+        dlt.remove();
+    }
+
+    const m = document.querySelector(".money");
+    if(m.children.length === 0){
+        gg();
+    }
+})

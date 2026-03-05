@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body class="bg-[#F0FDF4]">
+<body class="bg-[#F0FDF4] box-border">
     <header>
         <div class="navbar bg-[#15803D] shadow-sm px-10 text-white">
             <div class="navbar-start">
@@ -73,117 +73,30 @@
 
     <section>
         <div class="max-w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-6 gap-5">
-            <div id="m">
-                <h1 class="text-2xl font-bold mb-3">Categories</h1>
+            <div id="m" class="lg:sticky lg:top-6 lg:self-start lg:h-fit bg-white p-2 shadow-lg rounded-xl">
+                <h1 class="text-2xl font-bold mb-3 text-center">Categories</h1>
                 <p id="all-btn" class="border-1 mb-1 p-2 rounded-lg btn-outline bg-[#15803D] text-white btn block s">All Trees</p>
                 <ul class="space-y-1 ul">
-                    <!-- <li class="border-1 p-2 rounded-lg btn block text-left">Fruit Trees</li>
-                    <li class="border-1 p-2 rounded-lg btn block text-left">Flowering Trees</li>
-                    <li class="border-1 p-2 rounded-lg btn block text-left">Shade Trees</li>
-                    <li class="border-1 p-2 rounded-lg btn block text-left">Medicinal Trees</li>
-                    <li class="border-1 p-2 rounded-lg btn block text-left">Timber Trees</li>
-                    <li class="border-1 p-2 rounded-lg btn block text-left">Evergreen Trees</li>
-                    <li class="border-1 p-2 rounded-lg btn block text-left">Ornamental Plants</li>
-                    <li class="border-1 p-2 rounded-lg btn block text-left">Bamboo</li>
-                    <li class="border-1 p-2 rounded-lg btn block text-left">Climbers</li>
-                    <li class="border-1 p-2 rounded-lg btn block text-left">Aquatic Plants</li>
-                </ul> -->
+
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 col-span-3 xl:col-span-4 box">
-                <!-- <div class="bg-white space-y-2 p-4 rounded-xl shadow-lg">
-                    <div>
-                        <img class="rounded-xl w-full" src="assets/pahar.jpg" alt="">
-                    </div>
-                    <h3 class="font-bold">Mango Tree</h3>
-                    <p class="text-[12px]">A fast-growing tropical tree that produces delicious, juicy mangoes during summer. Its dense green</p>
-                    <div class="flex justify-between items-center">
-                        <button class="btn btn-soft btn-success rounded-full">Fruit Tree</button>
-                        <p class="font-semibold">৳500</p>
-                    </div>
-                    <button class="btn p-2 rounded-full bg-[#15803D] text-white font-semibold w-full">Add to Cart</button>
-                </div>
-                <div class="bg-white space-y-2 p-3 rounded-xl shadow-lg">
-                    <div>
-                        <img class="rounded-xl w-full" src="assets/pahar.jpg" alt="">
-                    </div>
-                    <h3 class="font-bold">Mango Tree</h3>
-                    <p class="text-[12px]">A fast-growing tropical tree that produces delicious, juicy mangoes during summer. Its dense green</p>
-                    <div class="flex justify-between items-center">
-                        <button class="btn btn-soft btn-success rounded-full">Fruit Tree</button>
-                        <p class="font-semibold">৳500</p>
-                    </div>
-                    <button class="btn p-2 rounded-full bg-[#15803D] text-white font-semibold w-full">Add to Cart</button>
-                </div>
-                <div class="bg-white space-y-2 p-3 rounded-xl shadow-lg">
-                    <div>
-                        <img class="rounded-xl w-full" src="assets/pahar.jpg" alt="">
-                    </div>
-                    <h3 class="font-bold">Mango Tree</h3>
-                    <p class="text-[12px]">A fast-growing tropical tree that produces delicious, juicy mangoes during summer. Its dense green</p>
-                    <div class="flex justify-between items-center">
-                        <button class="btn btn-soft btn-success rounded-full">Fruit Tree</button>
-                        <p class="font-semibold">৳500</p>
-                    </div>
-                    <button class="btn p-2 rounded-full bg-[#15803D] text-white font-semibold w-full">Add to Cart</button>
-                </div>
-                <div class="bg-white space-y-2 p-3 rounded-xl shadow-lg">
-                    <div>
-                        <img class="rounded-xl w-full" src="assets/pahar.jpg" alt="">
-                    </div>
-                    <h3 class="font-bold">Mango Tree</h3>
-                    <p class="text-[12px]">A fast-growing tropical tree that produces delicious, juicy mangoes during summer. Its dense green</p>
-                    <div class="flex justify-between items-center">
-                        <button class="btn btn-soft btn-success rounded-full">Fruit Tree</button>
-                        <p class="font-semibold">৳500</p>
-                    </div>
-                    <button class="btn p-2 rounded-full bg-[#15803D] text-white font-semibold w-full">Add to Cart</button>
-                </div>
-                <div class="bg-white space-y-2 p-3 rounded-xl shadow-lg">
-                    <div>
-                        <img class="rounded-xl w-full" src="assets/pahar.jpg" alt="">
-                    </div>
-                    <h3 class="font-bold">Mango Tree</h3>
-                    <p class="text-[12px]">A fast-growing tropical tree that produces delicious, juicy mangoes during summer. Its dense green</p>
-                    <div class="flex justify-between items-center">
-                        <button class="btn btn-soft btn-success rounded-full">Fruit Tree</button>
-                        <p class="font-semibold">৳500</p>
-                    </div>
-                    <button class="btn p-2 rounded-full bg-[#15803D] text-white font-semibold w-full">Add to Cart</button>
-                </div>
-                <div class="bg-white space-y-2 p-3 rounded-xl shadow-lg">
-                    <div>
-                        <img class="rounded-xl w-full" src="assets/pahar.jpg" alt="">
-                    </div>
-                    <h3 class="font-bold">Mango Tree</h3>
-                    <p class="text-[12px]">A fast-growing tropical tree that produces delicious, juicy mangoes during summer. Its dense green</p>
-                    <div class="flex justify-between items-center">
-                        <button class="btn btn-soft btn-success rounded-full">Fruit Tree</button>
-                        <p class="font-semibold">৳500</p>
-                    </div>
-                    <button class="btn p-2 rounded-full bg-[#15803D] text-white font-semibold w-full">Add to Cart</button>
-                </div> -->
+
             </div>
 
             <div class="bg-white rounded-xl p-0.5 shadow-md">
                 <div class="p-3 space-y-3">
-                    <h3 class="text-xl font-bold">Your Cart</h3>
+                    <h3 class="text-xl font-bold mb-4">Your Cart</h3>
                     <div class="py-7 px-2 rounded-xl hidden hh">
                         <p class="text-center">Your cart is empty</p>
                         <p class="text-center">Add trees to get started</p>
                     </div>
-                    <div class="flex justify-between items-center mb-5">
+                    <div class="flex justify-between items-center mb-5 bg-red-200 p-2 rounded-md">
                         <p class="font-bold">Total:</p>
                         <p class="font-semibold">৳<span class="doller">0</span></p>
                     </div>
                     <div class="money space-y-2">
-                        <!-- <div class="bg-[#CFF0DC] rounded-xl p-3 flex justify-between items-center">
-                            <div class="space-y-1">
-                                <p class="font-medium text-[14px]">Mango Tree</p>
-                                <p class="text-[12px]">৳500 x 1</p>
-                            </div>
-                            <div><i class="fa-solid fa-xmark"></i></div>
-                        </div> -->
+
                     </div>
                     
                 </div>
