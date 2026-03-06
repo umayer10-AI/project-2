@@ -17,7 +17,7 @@ const boxCall = (v) => {
     div.innerHTML = "";
     v.plants.forEach(x => {
         const d = document.createElement("div");
-        d.innerHTML = `<div class="bg-white space-y-2 p-4 rounded-xl shadow-lg flex flex-col k">
+        d.innerHTML = `<div class="bg-white space-y-2 p-4 rounded-xl shadow-lg flex flex-col k" id="${x.id}">
                     <div>
                         <img class="rounded-xl w-full h-40 object-cover" src="${x.image}" alt="">
                     </div>
@@ -52,7 +52,7 @@ let card = (v) => {
 
     v.plants.forEach(x => {
         const d = document.createElement("div");
-        d.innerHTML = `<div class="bg-white space-y-2 p-4 rounded-xl shadow-lg flex flex-col k">
+        d.innerHTML = `<div class="bg-white space-y-2 p-4 rounded-xl shadow-lg flex flex-col k" id="${x.id}">
                     <div>
                         <img class="rounded-xl w-full h-40 object-cover" src="${x.image}" alt="">
                     </div>
@@ -119,18 +119,26 @@ const taka = (v) => {
     // console.log(arr)
     const m = document.querySelector(".money");
 
-    const n = document.createElement("div");
-    n.innerHTML = `<div class="bg-[#CFF0DC] rounded-xl p-3 flex justify-between items-center pp">
-                        <div class="space-y-1">
-                            <p class="font-medium text-[14px] card-header">${h}</p>
-                            <p class="text-[12px]"><span class="tt">${t}</span> x <span class="num">${cnt}</span></p>
-                        </div>
-                            <div class="cross"><i class="fa-solid fa-xmark"></i></div>
-                        </div>`;
-    
-    m.appendChild(n);
-    gg();
+    const existing = [...m.children].find(x => x.querySelector(".card-header").innerText === h);
 
+    if(existing){
+        // quantity update
+        existing.querySelector(".num").innerText = cnt;
+    }
+    else{
+        const n = document.createElement("div");
+        n.innerHTML = `<div class="bg-[#CFF0DC] rounded-xl p-3 flex justify-between items-center pp">
+                            <div class="space-y-1">
+                                <p class="font-medium text-[14px] card-header">${h}</p>
+                                <p class="text-[12px]"><span class="tt">${t}</span> x <span class="num">${cnt}</span></p>
+                            </div>
+                                <div class="cross"><i class="fa-solid fa-xmark"></i></div>
+                            </div>`;
+        
+        m.appendChild(n);
+    }
+
+    gg();
 
 }
 
@@ -158,7 +166,6 @@ gg();
 
 
 const moneyDiv = document.querySelector(".money");
-// const cross = document.querySelector(".cross");
 
 moneyDiv.addEventListener("click", (e) => {
     const dlt = e.target.closest(".pp");
@@ -184,5 +191,42 @@ moneyDiv.addEventListener("click", (e) => {
     const m = document.querySelector(".money");
     if(m.children.length === 0){
         gg();
+    }
+})
+
+
+const modalCall = async (id) => {
+    const a = await fetch(`https://openapi.programming-hero.com/api/plant/${id}`);
+    const b = await a.json();
+    const c = b.plants;
+    console.log(c)
+
+    const nn = document.querySelector(".nn");
+    nn.innerHTML = "";
+
+    const n = document.createElement("div");
+    n.innerHTML = `<div>
+                <img class="mx-auto object-cover rounded-xl w-30" src="${c.image}" alt="">
+            </div>
+            <h3 class="text-xl font-bold text-white">${c.name}</h3>
+            <p class="py-4 text-white">${c.description}</p>
+            <p class="py-4 text-white">$${c.price}</p>
+            <div class="modal-action">
+            <form method="dialog">
+                <button class="btn">Close</button>
+            </form>
+            </div>`;
+    
+    nn.appendChild(n);
+    document.querySelector("#my_modal").showModal();
+}
+
+
+boxes.addEventListener("click",(e) => {
+    const r = e.target.closest(".k img, .k h3");
+    if(r){
+        const s = r.closest(".k");
+
+        modalCall(s.id);
     }
 })
